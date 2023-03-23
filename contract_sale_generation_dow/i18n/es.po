@@ -50,6 +50,8 @@ msgid ""
 "Contract manually sale order: <a href=\"#\" data-oe-model=\"%s\" data-oe-id="
 "\"%s\">Sale Order</a>"
 msgstr ""
+"Ventas manual desde contrato: <a href=\"#\" data-oe-model=\"%s\" data-oe-id="
+"\"%s\">Ventas</a>"
 
 #. module: contract_sale_generation
 #: model:ir.actions.server,name:contract_sale_generation.contract_cron_for_sale_ir_actions_server

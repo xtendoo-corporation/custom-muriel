@@ -1,7 +1,5 @@
-# Copyright 2017 Pesol (<http://pesol.es>)
-# Copyright 2017 Angel Moya <angel.moya@pesol.es>
+# Copyright 2023 Jaime Millan (<https://xtendoo.es>)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html)
-
 
 {
     "name": "Contracts Management - Recurring Sales Day of the Week",
