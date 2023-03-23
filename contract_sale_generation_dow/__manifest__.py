@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html)
 
 {
-    "name": "Contracts Management - Recurring Sales Day of the Week",
+    "name": "Custom Muriel Recurring Sales Day of the Week",
     "version": "16.0.1.0.0",
     "category": "Contract Management",
     "license": "AGPL-3",
