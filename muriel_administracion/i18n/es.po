@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 12:22+0000\n"
-"PO-Revision-Date: 2025-02-24 12:22+0000\n"
+"POT-Creation-Date: 2025-02-24 12:25+0000\n"
+"PO-Revision-Date: 2025-02-24 12:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 #. module: muriel_administracion
 #: model:ir.actions.report,print_report_name:muriel_administracion.action_report_invoice_custom
 msgid "'Invoice - %s' % (object.name)"
-msgstr ""
+msgstr "Factura - %s' % (object.name)"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "- Installment of"
-msgstr ""
+msgstr "- Cuota de"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -76,101 +76,103 @@ msgid ""
 "<br/>\n"
 "                                            on this account:"
 msgstr ""
+"<br/>\n"
+"                                            en esta cuenta:"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Amount</span>"
-msgstr "<span>Total</span>"
+msgstr "<span>Importe</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Description</span>"
-msgstr ""
+msgstr "<span>Descripción</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Disc.%</span>"
-msgstr ""
+msgstr "<span>Desc.%</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Quantity</span>"
-msgstr ""
+msgstr "<span>Cantidad</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Taxes</span>"
-msgstr ""
+msgstr "<span>Impuestos</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>Unit Price</span>"
-msgstr ""
+msgstr "<span>Precio Unitario</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<span>due on</span>"
-msgstr ""
+msgstr "<span>vence el</span>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Credit Note Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de la nota de crédito</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Customer Code</strong>"
-msgstr ""
+msgstr "<strong>Código de cliente</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Delivery Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de entrega</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Due Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha límite</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Incoterm</strong>"
-msgstr ""
+msgstr "<strong>Incoterm</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Invoice Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de factura:</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Receipt Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha de recibo</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Reference</strong>"
-msgstr ""
+msgstr "<strong>Referencia</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Shipping Address</strong>"
-msgstr ""
+msgstr "<strong>Dirección de envío</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "<strong>Source</strong>"
-msgstr ""
+msgstr "<strong>Origen</strong>"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Amount Due"
-msgstr ""
+msgstr "Cantidad por pagar"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -178,6 +180,8 @@ msgid ""
 "Cancelled\n"
 "                                        Invoice"
 msgstr ""
+"Factura\n"
+"                                        Cancelada"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -185,16 +189,18 @@ msgid ""
 "Cancelled Credit\n"
 "                                        Note"
 msgstr ""
+"Nota de Crédito\n"
+"                                        Cancelada"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Credit Note"
-msgstr ""
+msgstr "Nota de crédito"
 
 #. module: muriel_administracion
 #: model:ir.actions.report,name:muriel_administracion.action_report_invoice_custom
 msgid "Custom Invoice"
-msgstr ""
+msgstr "Facturas"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -202,11 +208,13 @@ msgid ""
 "Draft Credit\n"
 "                                        Note"
 msgstr ""
+"Borrador de Nota de\n"
+"                                        Crédito"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Draft Invoice"
-msgstr ""
+msgstr "Borrador de factura"
 
 #. module: muriel_administracion
 #: model:ir.model.fields,field_description:muriel_administracion.field_stock_picking__previous_picking_id
@@ -231,7 +239,7 @@ msgstr ""
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Invoice"
-msgstr ""
+msgstr "Factura"
 
 #. module: muriel_administracion
 #: model:ir.model,name:muriel_administracion.model_account_move
@@ -249,11 +257,13 @@ msgid ""
 "Paid\n"
 "                                                                    on"
 msgstr ""
+"Pagado\n"
+"                                                                    en"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Payment Communication:"
-msgstr ""
+msgstr "Comunicación de pago:"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -261,6 +271,8 @@ msgid ""
 "Payment within 30\n"
 "                                        calendar day"
 msgstr ""
+"Pago dentro de 30\n"
+"                                       días"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -270,17 +282,17 @@ msgstr ""
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Scan this QR Code with<br/>your banking application"
-msgstr ""
+msgstr "Escanea este Código QR con<br/>tu aplicación bancaria"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Tax ID"
-msgstr ""
+msgstr "Número de identificación fiscal"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Thirty one dollar and Five cents"
-msgstr ""
+msgstr "Treinta y un dólar y cinco centavos"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
@@ -288,6 +300,8 @@ msgid ""
 "Total amount in words:\n"
 "                                        <br/>"
 msgstr ""
+"Importe total con letra:\n"
+"                                        <br/>"
 
 #. module: muriel_administracion
 #: model:ir.model,name:muriel_administracion.model_stock_picking
@@ -297,14 +311,14 @@ msgstr "Traslado"
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Vendor Bill"
-msgstr ""
+msgstr "Factura del proveedor"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "Vendor Credit Note"
-msgstr ""
+msgstr "Nota de crédito de proveedor"
 
 #. module: muriel_administracion
 #: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
 msgid "due if paid before"
-msgstr ""
+msgstr "debido si se paga antes de"
