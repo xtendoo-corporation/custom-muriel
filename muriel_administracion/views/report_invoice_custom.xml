@@ -352,8 +352,8 @@
             model="account.move"
             string="Custom Invoice"
             report_type="qweb-pdf"
-            name="muriel_custom.report_invoice_document_custom"
-            file="muriel_custom.report_invoice_document_custom"
+            name="muriel_administracion.report_invoice_document_custom"
+            file="muriel_administracion.report_invoice_document_custom"
             print_report_name="'Invoice - %s' % (object.name)"
         />
 
@@ -361,7 +361,7 @@
             <field name="name">Custom Invoice</field>
             <field name="model">account.move</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">muriel_custom.report_invoice_document_custom</field>
+            <field name="report_name">muriel_administracion.report_invoice_document_custom</field>
             <field name="binding_model_id" ref="account.model_account_move"/>
             <field name="binding_type">report</field>
             <field name="print_report_name">'Invoice - %s' % (object.name)</field>

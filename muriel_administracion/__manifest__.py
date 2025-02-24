@@ -14,8 +14,6 @@
         'views/stock_picking_views_inherit.xml',
         'views/report_invoice_custom.xml',
     ],
-    'demo': [
-    ],
     'application': True,
     'installable': True,
     'auto_install': False,
