@@ -1,0 +1,310 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* muriel_administracion
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-24 12:22+0000\n"
+"PO-Revision-Date: 2025-02-24 12:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muriel_administracion
+#: model:ir.actions.report,print_report_name:muriel_administracion.action_report_invoice_custom
+msgid "'Invoice - %s' % (object.name)"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "- Installment of"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "11.05"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "20.00"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "2021-09-19"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "2023-09-12"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "2023-09-25"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "2023-10-31"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "2024-01-01"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "30.00"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "31.05"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"<br/>\n"
+"                                            on this account:"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Amount</span>"
+msgstr "<span>Total</span>"
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Description</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Disc.%</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Quantity</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Taxes</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>Unit Price</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<span>due on</span>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Credit Note Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Customer Code</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Delivery Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Due Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Incoterm</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Invoice Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Receipt Date</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Reference</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Shipping Address</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "<strong>Source</strong>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Amount Due"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Cancelled\n"
+"                                        Invoice"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Cancelled Credit\n"
+"                                        Note"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Credit Note"
+msgstr ""
+
+#. module: muriel_administracion
+#: model:ir.actions.report,name:muriel_administracion.action_report_invoice_custom
+msgid "Custom Invoice"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Draft Credit\n"
+"                                        Note"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: muriel_administracion
+#: model:ir.model.fields,field_description:muriel_administracion.field_stock_picking__previous_picking_id
+msgid "Entrega Anterior"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.view_picking_form_inherit
+msgid "Entrega anterior"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "INV/2023/00001"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "INV/2023/0001"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Invoice"
+msgstr ""
+
+#. module: muriel_administracion
+#: model:ir.model,name:muriel_administracion.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "PROFORMA"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Paid\n"
+"                                                                    on"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Payment Communication:"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Payment within 30\n"
+"                                        calendar day"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "SO123"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Scan this QR Code with<br/>your banking application"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Tax ID"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Thirty one dollar and Five cents"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid ""
+"Total amount in words:\n"
+"                                        <br/>"
+msgstr ""
+
+#. module: muriel_administracion
+#: model:ir.model,name:muriel_administracion.model_stock_picking
+msgid "Transfer"
+msgstr "Traslado"
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Vendor Bill"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "Vendor Credit Note"
+msgstr ""
+
+#. module: muriel_administracion
+#: model_terms:ir.ui.view,arch_db:muriel_administracion.report_invoice_document_custom
+msgid "due if paid before"
+msgstr ""

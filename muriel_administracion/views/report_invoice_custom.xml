@@ -182,7 +182,7 @@
                                                     </t>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-esc="line_combined.price_subtotal"/>
+                                                    <span t-esc="line_combined.price_subtotal" t-options='{"widget": "monetary", "display_currency": line_combined.currency_id}'/>
                                                 </td>
                                             </tr>
                                         </t>
