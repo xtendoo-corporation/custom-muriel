@@ -5,9 +5,10 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
-                <field name="picking_type_id" position="after">
-                    <field name="previous_picking_id"/>
-                </field>
+                <xpath expr="//button[@name='action_see_returns']" position="after">
+                    <button name="action_view_previous_picking" type="object" string="Entrega anterior"
+                            class="btn-secondary" icon="fa-truck"/>
+                </xpath>
             </field>
         </record>
     </data>

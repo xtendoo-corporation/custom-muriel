@@ -4,6 +4,16 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
 
+    # def create(self, vals):
+    #     move = super(AccountMove, self).create(vals)
+    #     move._combine_invoice_lines()
+    #     return move
+    #
+    # def write(self, vals):
+    #     res = super(AccountMove, self).write(vals)
+    #     self._combine_invoice_lines()
+    #     return res
+    #
     def get_combined_invoice_lines(self):
         combined_lines = {}
         for line in self.invoice_line_ids:

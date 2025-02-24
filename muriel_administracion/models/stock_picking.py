@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
@@ -20,3 +21,16 @@ class StockPicking(models.Model):
                 ('date_done', '<', picking.date_done)
             ], limit=1, order='date_done desc')
             picking.previous_picking_id = previous_picking
+
+    def action_view_previous_picking(self):
+        self.ensure_one()
+        if not self.previous_picking_id:
+            raise UserError('No hay una entrega anterior.')
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Previous Picking',
+            'view_mode': 'form',
+            'res_model': 'stock.picking',
+            'res_id': self.previous_picking_id.id,
+            'target': 'current',
+        }
