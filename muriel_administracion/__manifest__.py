@@ -13,6 +13,7 @@
     'data': [
         'views/stock_picking_views_inherit.xml',
         'views/report_invoice_custom.xml',
+        'views/stock_move_views.xml',
     ],
     'application': True,
     'installable': True,
