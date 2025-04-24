@@ -8,12 +8,15 @@
     'summary': 'Customización para Muriel',
     'images': [],
     'depends': [
+        'contract',
         'stock',
+        'contract_sale_generation',
     ],
     'data': [
         'views/stock_picking_views_inherit.xml',
         'views/report_invoice_custom.xml',
         'views/stock_move_views.xml',
+        'views/contract.xml',
     ],
     'application': True,
     'installable': True,
