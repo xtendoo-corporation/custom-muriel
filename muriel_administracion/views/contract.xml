@@ -1,4 +1,18 @@
 <odoo>
+    <record id="view_contract_tree_inherit_muriel" model="ir.ui.view">
+        <field name="name">contract.contract.tree.inherit.muriel</field>
+        <field name="model">contract.contract</field>
+        <field name="inherit_id" ref="contract.contract_contract_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="default_group_by">route_id</attribute>
+            </xpath>
+            <field name="partner_id" position="after">
+                <field name="route_id"/>
+            </field>
+        </field>
+    </record>
+
     <record id="contract_contract_form_view_route_id_form" model="ir.ui.view">
         <field name="name">contract.contract.route.id.form</field>
         <field name="model">contract.contract</field>
