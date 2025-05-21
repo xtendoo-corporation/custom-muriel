@@ -4,9 +4,6 @@
         <field name="model">contract.contract</field>
         <field name="inherit_id" ref="contract.contract_contract_tree_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//tree" position="attributes">
-                <attribute name="default_group_by">route_id</attribute>
-            </xpath>
             <field name="partner_id" position="after">
                 <field name="route_id"/>
             </field>
