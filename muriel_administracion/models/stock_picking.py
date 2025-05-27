@@ -18,8 +18,10 @@ class StockPicking(models.Model):
                 ('id', '!=', picking.id),
                 ('state', '=', 'done'),
                 ('picking_type_id', '=', picking.picking_type_id.id),
-                ('date_done', '<', picking.date_done)
-            ], limit=1, order='date_done desc')
+                ('date_done', '<=', picking.date_done)],
+                limit=1,
+                order='date_done desc',
+            )
             picking.previous_picking_id = previous_picking
 
     def action_view_previous_picking(self):
