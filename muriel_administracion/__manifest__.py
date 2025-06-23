@@ -17,7 +17,13 @@
         'views/report_invoice_custom.xml',
         'views/stock_move_views.xml',
         'views/contract.xml',
+        'views/view_order_form.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'muriel_administracion/static/src/scss/sale_portal.scss',
+        ],
+    },
     'application': True,
     'installable': True,
     'auto_install': False,

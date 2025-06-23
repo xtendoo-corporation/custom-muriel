@@ -1,0 +1,12 @@
+@media (max-width: 767px) {
+  .o_mobile_hide,
+  .o_mobile_hide ~ .o_form_label,
+  .o_mobile_hide ~ .o_td_label,
+  .o_form_label:has(+ .o_mobile_hide),
+  .o_td_label:has(+ .o_mobile_hide),
+  .o_form_label,
+  .o_td_label {
+    /* Oculta los labels si el campo siguiente está oculto */
+    display: none !important;
+  }
+}
