@@ -17,7 +17,7 @@
         'views/report_invoice_custom.xml',
         'views/stock_move_views.xml',
         'views/contract.xml',
-        'views/view_order_form.xml',
+        'views/view_picking_form.xml',
     ],
     'assets': {
         'web.assets_backend': [

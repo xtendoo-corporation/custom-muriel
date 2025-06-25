@@ -36,3 +36,29 @@ class StockPicking(models.Model):
             'res_id': self.previous_picking_id.id,
             'target': 'current',
         }
+
+    def action_mobile_custom(self):
+        self.ensure_one()
+        self.button_validate()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'stock.picking',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'current',
+        }
+
+    def action_return_picking(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'stock.return.picking',
+            'view_mode': 'form',
+            'view_id': self.env.ref('stock.view_stock_return_picking_form').id,
+            'target': 'new',
+            'context': {
+                'active_id': self.id,
+                'active_ids': [self.id],
+                'default_picking_id': self.id,
+            },
+        }

@@ -1,0 +1,78 @@
+<odoo>
+    <record id="view_picking_form_mobile_hide_fields" model="ir.ui.view">
+        <field name="name">stock.picking.form.mobile.hide.fields</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Ocultar campos en móvil (ajusta los nombres si es necesario) -->
+            <xpath expr="//field[@name='picking_type_id']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_id' and @groups='!stock.group_stock_multi_locations']"
+                   position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id' and @groups='!stock.group_stock_multi_locations']"
+                   position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_id' and @groups='stock.group_stock_multi_locations']"
+                   position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id' and @groups='stock.group_stock_multi_locations']"
+                   position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='scheduled_date']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='products_availability']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']" position="attributes">
+                <attribute name="widget">sol_o2m</attribute>
+                <attribute name="mode">list</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_uom' and @groups='uom.group_uom']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_uom' and @groups='!uom.group_uom']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+
+            <xpath expr="//header" position="after">
+                <div class="o_mobile_only" style="display: flex; gap: 8px; align-items: center;">
+                    <button name="action_mobile_custom"
+                            type="object"
+                            string="Confirmar"
+                            class="btn btn-primary"
+                            invisible="state == 'done'"
+                    />
+                    <widget name="signature"
+                            string="Firmar"
+                            highlight="1"
+                            class=""
+                            invisible="state != 'done' or is_signed"
+                            full_name="partner_id"
+                            groups="stock.group_stock_sign_delivery"/>
+                    <button name="action_return_picking"
+                            type="object"
+                            string="Devolver"
+                            class="btn btn-secondary"
+                            invisible="state != 'done' or picking_type_code == 'incoming'"
+                    />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

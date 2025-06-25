@@ -10,3 +10,11 @@
     display: none !important;
   }
 }
+@media (min-width: 768px) {
+  .o_mobile_only {
+    display: none !important;
+  }
+  .o_mobile_hide {
+    display: inline-block !important;
+  }
+}
