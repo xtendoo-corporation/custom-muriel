@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="web.ControlPanel" t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'o_control_panel')]" position="attributes">
+            <attribute name="class">o_control_panel d-flex flex-column gap-3 px-3 pt-2 pb-3 o_hide_all</attribute>
+        </xpath>
+    </t>
+</templates>

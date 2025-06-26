@@ -18,7 +18,7 @@ class StockPicking(models.Model):
                 ('id', '!=', picking.id),
                 ('state', '=', 'done'),
                 ('picking_type_id', '=', picking.picking_type_id.id),
-                ('date_done', '<=', picking.date_done)],
+                ('date_done', '<=', picking.scheduled_date)],
                 limit=1,
                 order='date_done desc',
             )
@@ -30,11 +30,15 @@ class StockPicking(models.Model):
             raise UserError('No hay una entrega anterior.')
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Previous Picking',
+            'res_model': 'stock.return.picking',
             'view_mode': 'form',
-            'res_model': 'stock.picking',
-            'res_id': self.previous_picking_id.id,
-            'target': 'current',
+            'view_id': self.env.ref('stock.view_stock_return_picking_form').id,
+            'target': 'new',
+            'context': {
+                'active_id': self.previous_picking_id.id,
+                'active_ids': [self.previous_picking_id.id],
+                'default_picking_id': self.previous_picking_id.id,
+            },
         }
 
     def action_mobile_custom(self):

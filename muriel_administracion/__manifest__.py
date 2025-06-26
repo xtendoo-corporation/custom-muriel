@@ -22,6 +22,10 @@
     'assets': {
         'web.assets_backend': [
             'muriel_administracion/static/src/scss/sale_portal.scss',
+            # 'muriel_administracion/static/src/xml/button_box.xml',
+            # 'muriel_administracion/static/src/xml/cog_menu.xml',
+            'muriel_administracion/static/src/xml/control_panel.xml',
+
         ],
     },
     'application': True,

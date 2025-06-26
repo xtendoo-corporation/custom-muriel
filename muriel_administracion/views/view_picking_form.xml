@@ -33,6 +33,15 @@
             <xpath expr="//field[@name='date_deadline']" position="attributes">
                 <attribute name="class">o_mobile_hide</attribute>
             </xpath>
+            <xpath expr="//field[@name='date_done']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//sheet/group/group[2]" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='owner_id']" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
             <xpath expr="//field[@name='products_availability']" position="attributes">
                 <attribute name="class">o_mobile_hide</attribute>
             </xpath>
@@ -49,9 +58,21 @@
             <xpath expr="//field[@name='product_uom_qty']" position="attributes">
                 <attribute name="optional">show</attribute>
             </xpath>
+            <xpath expr="//field[@name='state'][1]" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state'][2]" position="attributes">
+                <attribute name="class">o_mobile_hide</attribute>
+            </xpath>
 
             <xpath expr="//header" position="after">
                 <div class="o_mobile_only" style="display: flex; gap: 8px; align-items: center;">
+                    <button name="action_view_previous_picking"
+                            type="object"
+                            string="Entrega anterior"
+                            class="btn btn-secondary"
+                            invisible="state == 'done' or not previous_picking_id"
+                    />
                     <button name="action_mobile_custom"
                             type="object"
                             string="Confirmar"
@@ -65,12 +86,7 @@
                             invisible="state != 'done' or is_signed"
                             full_name="partner_id"
                             groups="stock.group_stock_sign_delivery"/>
-                    <button name="action_return_picking"
-                            type="object"
-                            string="Devolver"
-                            class="btn btn-secondary"
-                            invisible="state != 'done' or picking_type_code == 'incoming'"
-                    />
+
                 </div>
             </xpath>
         </field>
