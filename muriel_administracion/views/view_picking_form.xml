@@ -71,7 +71,7 @@
                             type="object"
                             string="Entrega anterior"
                             class="btn btn-secondary"
-                            invisible="state == 'done' or not previous_picking_id"
+                            invisible="not previous_picking_id"
                     />
                     <button name="action_mobile_custom"
                             type="object"
