@@ -12,6 +12,8 @@
                         <field name="date_to"/>
                     </group>
                     <group>
+                        <field name="partner_ids" widget="many2many_tags"/>
+                        <field name="product_ids" widget="many2many_tags"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
                 </group>
@@ -24,17 +26,4 @@
         </field>
     </record>
 
-
-
-    <!-- Acción para mostrar resultados -->
-    <record id="action_invoice_sale_delivery_trace_results" model="ir.actions.act_window">
-        <field name="name">Resultados Trazabilidad</field>
-        <field name="res_model">account.move</field>
-        <field name="view_mode">list,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'list', 'view_id': ref('view_invoice_sale_delivery_trace_tree')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('view_invoice_sale_delivery_trace_form')})]"/>
-        <field name="search_view_id" ref="view_invoice_sale_delivery_trace_search"/>
-        <field name="target">current</field>
-    </record>
 </odoo>

@@ -1,68 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Vista de árbol -->
-    <record id="view_invoice_sale_delivery_trace_tree" model="ir.ui.view">
-        <field name="name">account.move.trace.list</field>
-        <field name="model">account.move</field>
+    <!-- Vista de Lista Principal -->
+    <record id="view_invoice_trace_line_tree" model="ir.ui.view">
+        <field name="name">invoice.trace.line.tree</field>
+        <field name="model">invoice.trace.line</field>
         <field name="arch" type="xml">
-            <list string="Trazabilidad Facturas-Ventas-Entregas">
-                <field name="name" string="Factura"/>
-                <field name="invoice_date"/>
-                <field name="partner_id"/>
-                <field name="invoice_origin"/>
-                <field name="amount_total_signed"/>
-                <field name="state"/>
+            <list string="Trazabilidad Detallada" create="false" edit="false" delete="false"
+                  decoration-warning="has_returns == True">
+
+                <!-- Información básica -->
+                <field name="invoice_date" string="Fecha"/>
+                <field name="invoice_name" string="Factura"/>
+                <field name="partner_id" string="Cliente"/>
+                <field name="product_id" string="Producto" optional="show"/>
+                <field name="product_name" string="Descripción"/>
+
+                <!-- Pedidos y Albaranes -->
+                <field name="sale_order_names" string="Pedidos"/>
+                <field name="delivery_names" string="Entregas"/>
+                <field name="return_names" string="Devoluciones" optional="show"/>
+
+                <!-- Cantidades - NOMBRES ACTUALIZADOS -->
+
+                <field name="quantity_delivered" string="Cantidad Enviada" sum="Total Enviado"
+                       optional="show"/>
+                <field name="quantity_returned" string="Cantidad Devuelta" sum="Total Devuelto"
+                       optional="show" decoration-danger="quantity_returned > 0"/>
+                  <field name="quantity_invoiced" string="Total Facturado" sum="Total Facturado"
+                       decoration-bf="1"/>
+                <field name="quantity_net" string="Cantidad Neta" sum="Total Neto"
+                       optional="hide"/>
+
+                <!-- Valores monetarios -->
+                <field name="price_unit" string="P. Unit." optional="hide"/>
+                <field name="price_subtotal" string="Subtotal Facturado" sum="Total Facturado" optional="show"/>
+                <field name="price_total_net" string="💰 Total Neto" sum="Total Neto"
+                       optional="hide"/>
             </list>
         </field>
     </record>
 
-    <!-- Vista de formulario -->
-    <record id="view_invoice_sale_delivery_trace_form" model="ir.ui.view">
-        <field name="name">account.move.trace.form</field>
-        <field name="model">account.move</field>
+    <!-- Vista Pivote -->
+    <record id="view_invoice_trace_line_pivot" model="ir.ui.view">
+        <field name="name">invoice.trace.line.pivot</field>
+        <field name="model">invoice.trace.line</field>
         <field name="arch" type="xml">
-            <form string="Trazabilidad Facturas-Ventas-Entregas">
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="invoice_date"/>
-                            <field name="partner_id"/>
-                        </group>
-                        <group>
-                            <field name="invoice_origin"/>
-                            <field name="amount_total_signed"/>
-                            <field name="state"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page string="Líneas de Factura">
-                            <field name="invoice_line_ids">
-                                <list>
-                                    <field name="name"/>
-                                    <field name="price_unit"/>
-                                    <field name="price_subtotal"/>
-                                </list>
-                            </field>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
+            <pivot string="Análisis de Trazabilidad">
+                <field name="partner_id" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="invoice_date" interval="month" type="col"/>
+                <field name="quantity_invoiced" type="measure" string="Total Facturado"/>
+                <field name="quantity_delivered" type="measure" string="Cantidad Enviada"/>
+                <field name="quantity_returned" type="measure" string="Cantidad Devuelta"/>
+                <field name="quantity_net" type="measure" string="Cantidad Neta"/>
+                <field name="price_total_net" type="measure" string="Total Neto €"/>
+            </pivot>
         </field>
     </record>
 
-    <!-- Vista de búsqueda -->
-    <record id="view_invoice_sale_delivery_trace_search" model="ir.ui.view">
-        <field name="name">account.move.trace.search</field>
-        <field name="model">account.move</field>
+    <!-- Vista Gráfico -->
+    <record id="view_invoice_trace_line_graph" model="ir.ui.view">
+        <field name="name">invoice.trace.line.graph</field>
+        <field name="model">invoice.trace.line</field>
         <field name="arch" type="xml">
-            <search string="Buscar Facturas">
-                <field name="name"/>
+            <graph string="Análisis Gráfico" type="bar">
                 <field name="partner_id"/>
-                <field name="invoice_date"/>
-                <field name="invoice_origin"/>
-                <filter name="filter_draft" string="Borrador" domain="[('state','=','draft')]"/>
-                <filter name="filter_posted" string="Publicado" domain="[('state','=','posted')]"/>
+                <field name="quantity_invoiced" type="measure" string="Total Facturado"/>
+                <field name="quantity_delivered" type="measure" string="Cantidad Enviada"/>
+                <field name="quantity_returned" type="measure" string="Cantidad Devuelta"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Vista de Búsqueda -->
+    <record id="view_invoice_trace_line_search" model="ir.ui.view">
+        <field name="name">invoice.trace.line.search</field>
+        <field name="model">invoice.trace.line</field>
+        <field name="arch" type="xml">
+            <search string="Buscar">
+                <field name="invoice_name"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="sale_order_names"/>
+
+                <filter name="filter_with_returns" string="Con Devoluciones" domain="[('has_returns','=',True)]"/>
+                <filter name="filter_discrepancies" string="Con Discrepancias" domain="[('discrepancy','=',True)]"/>
+                <separator/>
+                <filter name="filter_this_month" string="Este Mes"
+                        domain="[('invoice_date','&gt;=',(context_today()-relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                ('invoice_date','&lt;=',(context_today()+relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_partner" string="Cliente" context="{'group_by':'partner_id'}"/>
+                    <filter name="group_product" string="Producto" context="{'group_by':'product_id'}"/>
+                    <filter name="group_invoice" string="Factura" context="{'group_by':'invoice_name'}"/>
+                    <filter name="group_date" string="Fecha" context="{'group_by':'invoice_date:month'}"/>
+                </group>
             </search>
         </field>
     </record>
