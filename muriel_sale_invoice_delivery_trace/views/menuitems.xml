@@ -6,17 +6,18 @@
         <field name="res_model">invoice.sale.delivery.trace.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="view_id" ref="view_invoice_sale_delivery_trace_wizard_form"/>
     </record>
 
     <!-- Menú en Ventas -->
-    <menuitem id="menu_sale_invoice_delivery_trace"
+    <menuitem id="menu_invoice_sale_delivery_trace"
               name="Trazabilidad Facturas-Ventas-Entregas"
               action="action_invoice_sale_delivery_trace_wizard"
               parent="sale.menu_sale_report"
               sequence="20"/>
 
     <!-- Menú en Contabilidad -->
-    <menuitem id="menu_account_invoice_delivery_trace"
+    <menuitem id="menu_invoice_sale_delivery_trace_accounting"
               name="Trazabilidad Facturas-Ventas-Entregas"
               action="action_invoice_sale_delivery_trace_wizard"
               parent="account.menu_finance_reports"

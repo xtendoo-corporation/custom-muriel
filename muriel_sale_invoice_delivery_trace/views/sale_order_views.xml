@@ -6,16 +6,16 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Entregas y Devoluciones" attrs="{'invisible': [('picking_count', '=', 0)]}">
+                <page string="Entregas y Devoluciones" invisible="picking_count == 0">
                     <field name="related_picking_ids" readonly="1">
-                        <tree>
+                        <list>
                             <field name="name"/>
                             <field name="picking_type_label"/>
                             <field name="scheduled_date"/>
                             <field name="state"/>
                             <field name="origin"/>
                             <field name="partner_id"/>
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </xpath>

@@ -50,7 +50,7 @@ class AccountMove(models.Model):
             'name': 'Pedidos de Venta Relacionados',
             'type': 'ir.actions.act_window',
             'res_model': 'sale.order',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.related_sale_order_ids.ids)],
             'context': {'create': False}
         }

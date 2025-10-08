@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_sale_delivery_trace_wizard_user,invoice.sale.delivery.trace.wizard.user,model_invoice_sale_delivery_trace_wizard,sales_team.group_sale_salesman,1,1,1,0
+access_invoice_sale_delivery_trace_wizard_manager,invoice.sale.delivery.trace.wizard.manager,model_invoice_sale_delivery_trace_wizard,sales_team.group_sale_manager,1,1,1,1
+access_invoice_sale_delivery_trace_wizard_account,invoice.sale.delivery.trace.wizard.account,model_invoice_sale_delivery_trace_wizard,account.group_account_invoice,1,1,1,0
+access_invoice_sale_delivery_trace_wizard_account_manager,invoice.sale.delivery.trace.wizard.account.manager,model_invoice_sale_delivery_trace_wizard,account.group_account_manager,1,1,1,1

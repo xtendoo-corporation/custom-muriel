@@ -43,7 +43,7 @@ class SaleOrder(models.Model):
             'name': 'Entregas y Devoluciones',
             'type': 'ir.actions.act_window',
             'res_model': 'stock.picking',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.related_picking_ids.ids)],
             'context': {
                 'create': False,
