@@ -23,7 +23,7 @@
                 <!-- Cantidades - NOMBRES ACTUALIZADOS -->
 
                 <field name="quantity_delivered" string="Cantidad Enviada" sum="Total Enviado"
-                       optional="show"/>
+                       optional="show" />
                 <field name="quantity_returned" string="Cantidad Devuelta" sum="Total Devuelto"
                        optional="show" decoration-danger="quantity_returned > 0"/>
                   <field name="quantity_invoiced" string="Total Facturado" sum="Total Facturado"

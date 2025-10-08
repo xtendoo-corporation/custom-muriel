@@ -167,7 +167,7 @@ class InvoiceSaleDeliveryTraceWizard(models.TransientModel):
 
         for picking in pickings:
             if picking.state != 'done':
-                print(f"          Picking {picking.name} estado: {picking.state} (no procesado)")
+                print(f"          Picking {picking.name} : {picking.state} (no procesado)")
                 continue
 
             # Buscar movimientos de este producto
@@ -272,22 +272,65 @@ class InvoiceSaleDeliveryTraceWizard(models.TransientModel):
             'bold': True,
             'align': 'center',
             'valign': 'vcenter',
-            'bg_color': '#D3D3D3'
+            'bg_color': '#4472C4',
+            'font_color': 'white',
+            'border': 1
         })
 
-        # Cabeceras
+        total_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#D9E1F2',
+            'border': 1,
+            'num_format': '#,##0.00'
+        })
+
+        invoice_header_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#E7E6E6',
+            'border': 1
+        })
+
+        normal_format = workbook.add_format({
+            'border': 1,
+            'num_format': '#,##0.00'
+        })
+
+        text_format = workbook.add_format({
+            'border': 1
+        })
+
+        # Cabeceras - IGUAL QUE LA VISTA LISTA
         headers = [
-            'Factura', 'Fecha Factura', 'Estado Factura', 'Cliente',
-            'Total Factura', 'Pedido', 'Estado Pedido', 'Albarán',
-            'Tipo Albarán', 'Estado Albarán', 'Código Producto',
-            'Nombre Producto', 'UdM', 'Cantidad'
+            'Fecha',
+            'Factura',
+            'Cliente',
+            'Producto',
+            'Descripción',
+            'Pedidos',
+            'Entregas',
+            'Devoluciones',
+            'Cantidad Enviada',
+            'Cantidad Devuelta',
+            'Total Facturado',
+            'Subtotal Facturado',
         ]
 
+        # Escribir cabeceras
         for col, header in enumerate(headers):
             worksheet.write(0, col, header, header_format)
-            worksheet.set_column(col, col, 15)  # Ancho de columna
 
-        # Obtener datos
+        # Ajustar anchos de columna
+        worksheet.set_column(0, 0, 12)  # Fecha
+        worksheet.set_column(1, 1, 18)  # Factura
+        worksheet.set_column(2, 2, 25)  # Cliente
+        worksheet.set_column(3, 3, 15)  # Producto
+        worksheet.set_column(4, 4, 30)  # Descripción
+        worksheet.set_column(5, 5, 20)  # Pedidos
+        worksheet.set_column(6, 6, 20)  # Entregas
+        worksheet.set_column(7, 7, 20)  # Devoluciones
+        worksheet.set_column(8, 11, 15)  # Cantidades y totales
+
+        # Obtener datos usando el mismo método que la vista
         domain = [
             ('invoice_date', '>=', self.date_from),
             ('invoice_date', '<=', self.date_to),
@@ -296,35 +339,124 @@ class InvoiceSaleDeliveryTraceWizard(models.TransientModel):
             ('company_id', '=', self.company_id.id),
         ]
 
-        invoices = self.env['account.move'].search(domain)
+        if self.partner_ids:
+            domain.append(('partner_id', 'in', self.partner_ids.ids))
+
+        invoices = self.env['account.move'].search(domain, order='invoice_date desc, name')
+
         row = 1
+        grand_total_sent = 0
+        grand_total_returned = 0
+        grand_total_invoiced = 0
+        grand_total_amount = 0
 
+        # Procesar cada factura (AGRUPADO POR FACTURA)
         for invoice in invoices:
-            # Obtener pedidos relacionados
-            sale_orders = self.env['sale.order'].search([
-                ('invoice_ids', 'in', invoice.ids)  # Nota: .ids en plural (lista de IDs)
-            ])
+            invoice_lines = invoice.invoice_line_ids.filtered(lambda l: l.display_type == 'product')
 
-            for order in sale_orders:
-                # Obtener albaranes
-                pickings = order.picking_ids
+            if self.product_ids:
+                invoice_lines = invoice_lines.filtered(lambda l: l.product_id in self.product_ids)
 
-                for picking in pickings:
-                    for move in picking.move_ids:
-                        worksheet.write(row, 0, invoice.name)
-                        worksheet.write(row, 1, invoice.invoice_date.strftime('%Y-%m-%d'))
-                        worksheet.write(row, 2, invoice.state)
-                        worksheet.write(row, 3, invoice.partner_id.name)
-                        worksheet.write(row, 4, invoice.amount_total)
-                        worksheet.write(row, 5, order.name)
-                        worksheet.write(row, 6, order.state)
-                        worksheet.write(row, 7, picking.name)
-                        worksheet.write(row, 8, 'Devolución' if picking.is_return else 'Entrega')
-                        worksheet.write(row, 9, picking.state)
-                        worksheet.write(row, 10, move.product_id.default_code or '')
-                        worksheet.write(row, 11, move.product_id.name)
-                        worksheet.write(row, 12, move.product_uom.name)
-                        row += 1
+            if not invoice_lines:
+                continue
+
+            # Cabecera de factura
+            worksheet.write(row, 0, invoice.invoice_date.strftime('%d/%m/%Y'), invoice_header_format)
+            worksheet.write(row, 1, invoice.name, invoice_header_format)
+            worksheet.write(row, 2, invoice.partner_id.name, invoice_header_format)
+            worksheet.write(row, 3, '', invoice_header_format)
+            worksheet.write(row, 4, '', invoice_header_format)
+            worksheet.write(row, 5, '', invoice_header_format)
+            worksheet.write(row, 6, '', invoice_header_format)
+            worksheet.write(row, 7, '', invoice_header_format)
+            worksheet.write(row, 8, '', invoice_header_format)
+            worksheet.write(row, 9, '', invoice_header_format)
+            worksheet.write(row, 10, '', invoice_header_format)
+            worksheet.write(row, 11, '', invoice_header_format)
+            row += 1
+
+            # Totales por factura
+            invoice_total_sent = 0
+            invoice_total_returned = 0
+            invoice_total_invoiced = 0
+            invoice_total_amount = 0
+
+            # Líneas de la factura
+            for inv_line in invoice_lines:
+                trace_data = self._compute_trace_line_data(invoice, inv_line)
+
+                worksheet.write(row, 0, '', text_format)
+                worksheet.write(row, 1, '', text_format)
+                worksheet.write(row, 2, '', text_format)
+                worksheet.write(row, 3, trace_data['product_id'] and self.env['product.product'].browse(
+                    trace_data['product_id']).default_code or '', text_format)
+                worksheet.write(row, 4, trace_data['product_name'], text_format)
+                worksheet.write(row, 5, trace_data['sale_order_names'], text_format)
+                worksheet.write(row, 6, trace_data['delivery_names'], text_format)
+                worksheet.write(row, 7, trace_data['return_names'], text_format)
+                worksheet.write(row, 8, trace_data['quantity_delivered'], normal_format)
+                worksheet.write(row, 9, trace_data['quantity_returned'], normal_format)
+                worksheet.write(row, 10, trace_data['quantity_invoiced'], normal_format)
+                worksheet.write(row, 11, trace_data['price_subtotal'], normal_format)
+                worksheet.write(row, 12, '', text_format)
+
+                invoice_total_sent += trace_data['quantity_delivered']
+                invoice_total_returned += trace_data['quantity_returned']
+                invoice_total_invoiced += trace_data['quantity_invoiced']
+                invoice_total_amount += trace_data['price_subtotal']
+
+                row += 1
+
+            # Subtotales por factura
+            worksheet.write(row, 0, '', total_format)
+            worksheet.write(row, 1, '', total_format)
+            worksheet.write(row, 2, '', total_format)
+            worksheet.write(row, 3, '', total_format)
+            worksheet.write(row, 4, 'SUBTOTAL FACTURA', total_format)
+            worksheet.write(row, 5, '', total_format)
+            worksheet.write(row, 6, '', total_format)
+            worksheet.write(row, 7, '', total_format)
+            worksheet.write(row, 8, invoice_total_sent, total_format)
+            worksheet.write(row, 9, invoice_total_returned, total_format)
+            worksheet.write(row, 10, invoice_total_invoiced, total_format)
+            worksheet.write(row, 11, invoice_total_amount, total_format)
+            worksheet.write(row, 12, '', total_format)
+            row += 1
+
+            # Línea en blanco entre facturas
+            row += 1
+
+            # Acumular totales generales
+            grand_total_sent += invoice_total_sent
+            grand_total_returned += invoice_total_returned
+            grand_total_invoiced += invoice_total_invoiced
+            grand_total_amount += invoice_total_amount
+
+        # TOTALES GENERALES
+        grand_total_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#4472C4',
+            'font_color': 'white',
+            'border': 2,
+            'num_format': '#,##0.00'
+        })
+
+        worksheet.write(row, 0, '', grand_total_format)
+        worksheet.write(row, 1, '', grand_total_format)
+        worksheet.write(row, 2, '', grand_total_format)
+        worksheet.write(row, 3, '', grand_total_format)
+        worksheet.write(row, 4, 'TOTAL GENERAL', grand_total_format)
+        worksheet.write(row, 5, '', grand_total_format)
+        worksheet.write(row, 6, '', grand_total_format)
+        worksheet.write(row, 7, '', grand_total_format)
+        worksheet.write(row, 8, grand_total_sent, grand_total_format)
+        worksheet.write(row, 9, grand_total_returned, grand_total_format)
+        worksheet.write(row, 10, grand_total_invoiced, grand_total_format)
+        worksheet.write(row, 11, grand_total_amount, grand_total_format)
+        worksheet.write(row, 12, '', grand_total_format)
+
+        # Congelar primera fila
+        worksheet.freeze_panes(1, 0)
 
         workbook.close()
 
