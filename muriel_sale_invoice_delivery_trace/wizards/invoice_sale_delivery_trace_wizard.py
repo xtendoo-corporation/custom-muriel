@@ -102,9 +102,7 @@ class InvoiceSaleDeliveryTraceWizard(models.TransientModel):
         for invoice in invoices:
             # Obtener pedidos relacionados
             sale_orders = self.env['sale.order'].search([
-                '|',
-                ('invoice_ids', 'in', invoice.id),
-                ('name', '=', invoice.invoice_origin)
+                ('invoice_ids', 'in', invoice.ids)  # Nota: .ids en plural (lista de IDs)
             ])
 
             for order in sale_orders:
@@ -126,7 +124,6 @@ class InvoiceSaleDeliveryTraceWizard(models.TransientModel):
                         worksheet.write(row, 10, move.product_id.default_code or '')
                         worksheet.write(row, 11, move.product_id.name)
                         worksheet.write(row, 12, move.product_uom.name)
-                        worksheet.write(row, 13, move.quantity_done)
                         row += 1
 
         workbook.close()
