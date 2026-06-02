@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_total_qty_template">
+        <t t-call="web.html_container">
+            <t t-set="o" t-value="docs[:1]"/>
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Suma de cantidades por producto</h2>
+
+                    <div class="row mt-3 mb-4">
+                        <div class="col-4">
+                            <strong>Pedidos seleccionados:</strong>
+                            <span t-esc="data.get('selected_order_count', 0)"/>
+                        </div>
+                        <div class="col-4">
+                            <strong>Productos distintos:</strong>
+                            <span t-esc="data.get('selected_product_count', 0)"/>
+                        </div>
+                        <div class="col-4 text-end">
+                            <strong>Total cantidad:</strong>
+                            <span t-esc="data.get('total_qty', 0.0)"/>
+                        </div>
+                    </div>
+
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th class="text-end">Cantidad total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data.get('product_totals', [])" t-as="product_total" t-key="product_total.get('product_id')">
+                                <tr>
+                                    <td t-esc="product_total.get('product_name')"/>
+                                    <td class="text-end" t-esc="product_total.get('total_qty')"/>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><strong>Total general</strong></td>
+                                <td class="text-end"><strong t-esc="data.get('total_qty', 0.0)"/></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_total_qty" model="ir.actions.report">
+        <field name="name">Suma de cantidades de pedidos</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">muriel_sum_qty_orders.report_total_qty_template</field>
+        <field name="report_file">muriel_sum_qty_orders.report_total_qty_template</field>
+        <field name="print_report_name">'Suma cantidades pedidos'</field>
+    </record>
+</odoo>
+

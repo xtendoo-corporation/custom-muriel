@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_order_tree_inherit_muriel_sum_qty" model="ir.ui.view">
+        <field name="name">sale.order.tree.muriel.sum.qty</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/header" position="inside">
+                <button
+                    name="action_print_total_qty"
+                    type="object"
+                    string="Imprimir suma cantidades"
+                    class="btn-primary"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
