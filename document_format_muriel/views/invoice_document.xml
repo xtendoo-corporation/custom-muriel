@@ -2,6 +2,14 @@
 <odoo>
     <template id="report_invoice_document_grouped" inherit_id="account.report_invoice_document">
 
+        <!-- Añadir Fecha de origen en la cabecera -->
+        <xpath expr="//div[@id='informations']//div[@name='origin']" position="after">
+            <div class="col" t-if="o.invoice_origin" name="origin_date">
+                <strong>Fecha de origen</strong>
+                <div t-out="o._get_invoice_origin_dates()"/>
+            </div>
+        </xpath>
+
         <!-- Reemplazar el tbody con líneas agrupadas -->
         <xpath expr="//table[contains(@class, 'table')]//tbody" position="replace">
             <tbody class="invoice_tbody">

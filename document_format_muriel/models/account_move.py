@@ -1,4 +1,5 @@
 from odoo import models
+from odoo.tools import format_date
 from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
 
@@ -112,3 +113,19 @@ class AccountMove(models.Model):
                 result.append(result_item)
 
         return result
+
+    def _get_invoice_origin_dates(self):
+        self.ensure_one()
+        if not self.invoice_origin:
+            return ""
+
+        sale_orders = self.invoice_line_ids.mapped('sale_line_ids.order_id')
+        if not sale_orders:
+            names = [n.strip() for n in (self.invoice_origin or "").split(',')]
+            sale_orders = self.env['sale.order'].search([('name', 'in', names)])
+
+        if not sale_orders:
+            return ""
+
+        dates = sorted(list(set(so.date_order.date() for so in sale_orders if so.date_order)))
+        return ", ".join(format_date(self.env, d) for d in dates)
